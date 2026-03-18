@@ -1,29 +1,24 @@
-import { useEffect, useState } from "react";
+import { useMotionValueEvent, useScroll } from "framer-motion";
+import { useState } from "react";
 
 const ScrollProgress = () => {
-    const [progress, setProgress] = useState(0);
+  const { scrollYProgress } = useScroll();
+  const [progress, setProgress] = useState(0);
 
-    useEffect(() => {
-        const fn = () => {
-            const total = document.documentElement.scrollHeight - window.innerHeight;
-            setProgress(total > 0 ? (window.scrollY / total) * 100 : 0);
-        };
-        window.addEventListener("scroll", fn);
-        return () => window.removeEventListener("scroll", fn);
-    }, []);
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    setProgress(latest);
+  });
 
-    return (
-        <div className="fixed top-0 left-0 right-0 h-[3px] z-50 bg-transparent">
-            <div
-                className="h-full rounded-r-full transition-all duration-150"
-                style={{
-                    width: `${progress}%`,
-                    background: "linear-gradient(90deg, #00d4ff, #7c3aed, #f97316)",
-                    boxShadow: "0 0 10px rgba(0, 212, 255, 0.5)",
-                }}
-            />
-        </div>
-    );
+  return (
+    <div
+      className="fixed top-0 left-0 h-[3px] z-50"
+      style={{
+        width: `${progress * 100}%`,
+        backgroundColor: "#00b4d8",
+        transition: "width 0.1s linear",
+      }}
+    />
+  );
 };
 
 export default ScrollProgress;

@@ -1,22 +1,19 @@
-import { Github, Linkedin, Mail, Heart, ArrowUp, Trophy } from "lucide-react";
+import { Github, Linkedin, Mail, Heart, ArrowUp } from "lucide-react";
 import { motion } from "framer-motion";
 import { SiLeetcode } from "react-icons/si";
-import logoImg from "../assets/ADY_white_logo.png";
 
 const social = [
   { label: "GitHub", href: "https://github.com/aakashdeepyadav", icon: Github },
   { label: "LinkedIn", href: "https://linkedin.com/in/aakashdeepyadav", icon: Linkedin },
   { label: "Email", href: "mailto:aakashdeepyadav106@gmail.com", icon: Mail },
   { label: "LeetCode", href: "https://leetcode.com/u/aakashdeepyadav/", icon: SiLeetcode },
-  { label: "Codolio", href: "https://codolio.com/profile/aakashdeepyadav", icon: Trophy },
 ];
 
 const nav = [
-  { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
+  { label: "Certificates", href: "#certificates" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -29,11 +26,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           {/* Brand */}
           <div>
-            <a href="#home" className="inline-block">
-              <img src={logoImg} alt="ADY Logo" className="h-8 w-auto theme-logo" />
+            <a href="#home" className="text-xl font-extrabold tracking-tight theme-text-heading">
+              Aakash<span style={{ color: "#00b4d8" }}>.</span>
             </a>
             <p className="text-sm theme-text-faint mt-3 max-w-xs leading-relaxed">
-              Full Stack Developer & AI Builder — building scalable web apps and ML-powered systems.
+              Software developer building full-stack apps, REST APIs, and ML-powered systems.
             </p>
           </div>
 
@@ -86,8 +83,8 @@ const Footer = () => {
       {/* Scroll to Top */}
       <motion.button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="fixed bottom-6 right-6 p-3 rounded-2xl backdrop-blur-md theme-text-muted hover:text-cyan-400 transition-all duration-300 z-40 shadow-xl"
-        style={{ backgroundColor: "var(--nav-scrolled-bg)", border: "1px solid var(--border-primary)" }}
+        className="fixed bottom-6 right-6 p-3 rounded-2xl theme-text-muted hover:text-cyan-400 transition-all duration-300 z-40 shadow-xl"
+        style={{ backgroundColor: "var(--nav-scrolled-bg)", backdropFilter: "blur(12px)", border: "1px solid var(--border-primary)" }}
         whileHover={{ y: -3 }}
         whileTap={{ scale: 0.9 }}
         title="Back to top"

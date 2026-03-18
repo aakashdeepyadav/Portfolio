@@ -1,184 +1,149 @@
-import { ExternalLink, Github, TrendingUp, ArrowRight, Layers } from "lucide-react";
+import { ExternalLink, Github, Layers } from "lucide-react";
 import { motion } from "framer-motion";
 
 const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 24 } as const,
+  initial: { opacity: 0, y: 20 } as const,
   whileInView: { opacity: 1, y: 0 } as const,
   viewport: { once: true } as const,
-  transition: { duration: 0.5, delay },
+  transition: { duration: 0.4, delay },
 });
 
 const projects = [
   {
     title: "Student Career Recommendation System",
-    desc: "ML-powered platform that profiles students across 20+ attributes and recommends personalized career paths. Microservice architecture with React frontend, Node.js backend, and FastAPI ML service.",
-    results: [
-      "Silhouette Score ~0.82 using KMeans++ with auto-selection",
-      "25+ career profiles with cosine similarity matching",
-      "Sub-second real-time inference via JWT-secured APIs",
-      "2D/3D visualizations with PCA and UMAP",
-    ],
+    desc: "Career guidance app with a microservice setup — React frontend talks to a Node.js API, which routes requests to a FastAPI ML service. The ML model is trained on 20+ student attributes using Scikit-Learn.",
     tech: ["React.js", "Node.js", "FastAPI", "Python", "MongoDB", "Scikit-Learn"],
     github: "https://github.com/aakashdeepyadav",
     live: "https://student-career-recommendation-system.vercel.app/",
-    timeline: "Oct 2025 – Nov 2025",
-    accent: "#00d4ff",
-    emoji: "🧠",
+    screenshot: "/projects/Student_Career_Recommendation_System_Screenshot.png",
   },
   {
     title: "Shared Expense Tracker",
-    desc: "Real-time group expense tracking for PGs and apartments. Firebase authentication and real-time updates with automated settlement logic.",
-    results: [
-      "Firebase Auth + role-based access control",
-      "Live dashboard with sub-100ms Firestore listeners",
-      "Automated 'who owes whom' settlement",
-      "90% reduction in manual reconciliation",
-    ],
+    desc: "Group expense management app with Firebase Auth, Firestore real-time sync, and an automated debt-settlement algorithm. Supports multiple groups, split types, and transaction history.",
     tech: ["React.js", "Express.js", "Firebase", "JavaScript", "Firestore"],
     github: "https://github.com/aakashdeepyadav",
-    live: "https://shared-expense-tracker-web.vercel.app/",
-    timeline: "May 2025 – Jun 2025",
-    accent: "#7c3aed",
-    emoji: "💰",
+    live: "https://shared-expense-tracker-set.vercel.app/",
+    screenshot: "/projects/shared_expense_tracker_screenshot.png",
   },
   {
     title: "Time Management AI Coach",
-    desc: "LLM-powered productivity assistant with Pomodoro timers, task planners, and weekly schedulers. Tracks productivity metrics and provides personalized coaching.",
-    results: [
-      "Chat interface powered by Claude/GPT for coaching",
-      "Integrated Pomodoro, task planner, and calendar",
-      "Real-time productivity tracking & visualization",
-      "30–40% reported improvement in productivity",
-    ],
+    desc: "Productivity app with LLM-powered coaching. Has Pomodoro timers, a drag-and-drop task board, auto-generated weekly schedules, and charts that track how productive you've been.",
     tech: ["React.js", "Node.js", "LLM APIs", "Python", "PostgreSQL", "Tailwind CSS"],
     github: "https://github.com/aakashdeepyadav",
-    live: "https://ai-productivity-coach.vercel.app",
-    timeline: "Ongoing",
-    accent: "#f97316",
-    emoji: "⏱️",
+    live: "https://time-management-coach.netlify.app/",
+    screenshot: "/projects/Time_Management_Coach_Screenshot.png",
   },
 ];
 
 const Projects = () => (
   <section id="projects" className="relative py-28 section-divider overflow-hidden">
-    {/* Background decoration */}
-    <div className="absolute inset-0 pointer-events-none">
-      <div
-        className="absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage: `radial-gradient(circle, var(--dot-color) 1px, transparent 1px)`,
-          backgroundSize: "40px 40px",
-        }}
-      />
-      <div className="absolute top-1/3 -right-40 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[160px]" />
-      <div className="absolute bottom-1/4 -left-40 w-[400px] h-[400px] bg-violet-500/5 rounded-full blur-[140px]" />
-    </div>
-
     <div className="wrapper relative z-10">
-      {/* Header */}
+      {/* Header with section number */}
       <motion.div {...fadeUp()} className="mb-16">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
-            <Layers size={18} className="text-cyan-400" />
-          </div>
-          <p className="text-cyan-400 font-semibold text-sm tracking-[0.2em] uppercase">Work</p>
-        </div>
-        <h2 className="text-4xl sm:text-5xl font-bold theme-text-heading mb-4">Featured Projects</h2>
-        <p className="theme-text-muted text-lg max-w-xl">
-          Explore my recent work — full-stack apps, AI integrations, and more
+        <h2 className="text-3xl sm:text-4xl font-bold theme-text-heading mb-3">Featured Projects</h2>
+        <p className="theme-text-muted text-base max-w-xl">
+          Some things I've built recently
         </p>
       </motion.div>
 
-      {/* Cards */}
-      <div className="space-y-8">
+      {/* Project Grid */}
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((p, i) => (
-          <motion.article key={i} {...fadeUp(i * 0.12)} className="group">
-            <div className="glow-card">
-              <div className="relative p-6 sm:p-8">
-                {/* Top accent bar */}
-                <div
-                  className="absolute top-0 left-0 right-0 h-[2px] rounded-t-2xl"
-                  style={{ background: `linear-gradient(90deg, ${p.accent}, transparent)` }}
+          <motion.article key={i} {...fadeUp(i * 0.08)} className="group">
+            <div className="glass-card h-full flex flex-col overflow-hidden">
+              {/* Screenshot */}
+              <div
+                className="relative h-48 overflow-hidden"
+                style={{ backgroundColor: "var(--bg-card-alt)" }}
+              >
+                <img
+                  src={p.screenshot}
+                  alt={p.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = "none";
+                    // Show fallback icon
+                    const fallback = target.nextElementSibling as HTMLElement;
+                    if (fallback) fallback.style.display = "flex";
+                  }}
                 />
-
-                {/* Header with emoji */}
-                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6">
-                  <div className="flex items-start gap-4">
-                    <motion.span
-                      className="text-3xl flex-shrink-0 mt-0.5"
-                      whileHover={{ scale: 1.2, rotate: 10 }}
-                    >
-                      {p.emoji}
-                    </motion.span>
-                    <div>
-                      <h3 className="text-xl font-bold theme-text-heading mb-1 group-hover:text-cyan-400 transition-colors">
-                        {p.title}
-                      </h3>
-                      <p className="text-sm theme-text-faint">{p.timeline}</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-2 flex-shrink-0">
-                    <motion.a
-                      href={p.github} target="_blank" rel="noopener noreferrer"
-                      className="p-2.5 rounded-xl theme-bg-tag theme-text-muted hover:text-cyan-400 transition-all"
-                      style={{ border: "1px solid var(--border-tag)" }}
-                      title="Source Code"
-                      whileHover={{ scale: 1.1 }}
-                    >
-                      <Github size={16} />
-                    </motion.a>
-                    <motion.a
-                      href={p.live} target="_blank" rel="noopener noreferrer"
-                      className="p-2.5 rounded-xl theme-bg-tag theme-text-muted hover:text-cyan-400 transition-all"
-                      style={{ border: "1px solid var(--border-tag)" }}
-                      title="Live Demo"
-                      whileHover={{ scale: 1.1 }}
-                    >
-                      <ExternalLink size={16} />
-                    </motion.a>
-                  </div>
+                {/* Fallback if no image */}
+                <div className="absolute inset-0 items-center justify-center hidden"
+                  style={{ backgroundColor: "var(--bg-card-alt)" }}>
+                  <Layers size={40} className="theme-text-faint opacity-40" />
                 </div>
-
-                {/* Description */}
-                <p className="theme-text-secondary text-sm leading-relaxed mb-6">{p.desc}</p>
-
-                {/* Results with visual bar */}
-                <div className="mb-6">
-                  <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: p.accent }}>
-                    <TrendingUp size={14} /> Key Results
-                  </div>
-                  <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5">
-                    {p.results.map((r, j) => (
-                      <li key={j} className="flex items-start gap-2.5 text-sm theme-text-secondary">
-                        <span
-                          className="w-5 h-5 rounded-md flex items-center justify-center text-[10px] mt-0.5 flex-shrink-0 border"
-                          style={{
-                            color: p.accent,
-                            borderColor: `${p.accent}30`,
-                            background: `${p.accent}10`,
-                          }}
-                        >
-                          ✓
-                        </span>
-                        {r}
-                      </li>
-                    ))}
-                  </ul>
+                {/* Overlay on hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3"
+                  style={{ backgroundColor: "rgba(0,0,0,0.6)" }}
+                >
+                  <a
+                    href={p.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 rounded-xl text-white transition-colors hover:scale-110 transform duration-200"
+                    style={{ backgroundColor: "rgba(255,255,255,0.15)" }}
+                    title="Live Demo"
+                  >
+                    <ExternalLink size={18} />
+                  </a>
+                  <a
+                    href={p.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 rounded-xl text-white transition-colors hover:scale-110 transform duration-200"
+                    style={{ backgroundColor: "rgba(255,255,255,0.15)" }}
+                    title="Source Code"
+                  >
+                    <Github size={18} />
+                  </a>
                 </div>
+              </div>
 
-                {/* Tech + Live link */}
-                <div className="flex flex-wrap items-center gap-2">
+              {/* Content */}
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="text-lg font-bold theme-text-heading mb-2 group-hover:text-cyan-400 transition-colors">
+                  {p.title}
+                </h3>
+                <p className="theme-text-muted text-sm leading-relaxed mb-5 flex-1">{p.desc}</p>
+
+                {/* Tech Tags */}
+                <div className="flex flex-wrap gap-1.5 mb-5">
                   {p.tech.map((t) => (
-                    <span key={t} className="skill-icon px-3 py-1.5 text-xs rounded-full theme-bg-tag theme-text-muted theme-text-heading-hover transition-colors cursor-default" style={{ border: "1px solid var(--border-tag)" }}>
+                    <span
+                      key={t}
+                      className="px-2.5 py-1 text-[11px] rounded-lg theme-bg-tag theme-text-muted"
+                      style={{ border: "1px solid var(--border-tag)" }}
+                    >
                       {t}
                     </span>
                   ))}
+                </div>
+
+                {/* Action Links */}
+                <div className="flex gap-3 pt-4" style={{ borderTop: "1px solid var(--border-primary)" }}>
                   <a
-                    href={p.live} target="_blank" rel="noopener noreferrer"
-                    className="ml-auto hidden sm:inline-flex items-center gap-1.5 text-xs font-medium transition-colors hover:theme-text-heading"
-                    style={{ color: p.accent }}
+                    href={p.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 text-xs font-semibold rounded-lg transition-colors duration-200"
+                    style={{
+                      backgroundColor: "rgba(0, 180, 216, 0.08)",
+                      color: "#00b4d8",
+                      border: "1px solid rgba(0, 180, 216, 0.2)",
+                    }}
                   >
-                    View Live <ArrowRight size={12} />
+                    <ExternalLink size={13} /> Live Demo
+                  </a>
+                  <a
+                    href={p.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 text-xs font-semibold rounded-lg theme-bg-tag theme-text-secondary transition-colors duration-200"
+                    style={{ border: "1px solid var(--border-tag)" }}
+                  >
+                    <Github size={13} /> GitHub
                   </a>
                 </div>
               </div>
@@ -188,9 +153,14 @@ const Projects = () => (
       </div>
 
       {/* CTA */}
-      <motion.div {...fadeUp(0.4)} className="text-center mt-16">
-        <a href="https://github.com/aakashdeepyadav" target="_blank" rel="noopener noreferrer" className="btn-glow btn-glow-outline">
-          <Github size={18} /> See All on GitHub <ArrowRight size={14} />
+      <motion.div {...fadeUp(0.3)} className="text-center mt-14">
+        <a
+          href="https://github.com/aakashdeepyadav"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-outline"
+        >
+          <Github size={18} /> See All on GitHub
         </a>
       </motion.div>
     </div>

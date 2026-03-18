@@ -1,150 +1,95 @@
-import { Code, Brain, Lightbulb, Layers, Download, User } from "lucide-react";
+import { Download, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import profileImage from "../assets/aakash.jpg";
 
 const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 24 } as const,
+  initial: { opacity: 0, y: 20 } as const,
   whileInView: { opacity: 1, y: 0 } as const,
   viewport: { once: true } as const,
-  transition: { duration: 0.5, delay },
+  transition: { duration: 0.4, delay },
 });
 
 const About = () => {
-  const competencies = [
-    { name: "Full Stack Dev", pct: 90, icon: Code, color: "#00d4ff" },
-    { name: "ML & AI", pct: 85, icon: Brain, color: "#7c3aed" },
-    { name: "Problem Solving", pct: 95, icon: Lightbulb, color: "#f97316" },
-    { name: "System Design", pct: 80, icon: Layers, color: "#10b981" },
-  ];
-
   return (
     <section id="about" className="relative py-28 section-divider overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 -right-60 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[160px]" />
-        <div
-          className="absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage: `radial-gradient(circle, var(--dot-color) 1px, transparent 1px)`,
-            backgroundSize: "40px 40px",
-          }}
-        />
-      </div>
-
       <div className="wrapper relative z-10">
         {/* Header */}
         <motion.div {...fadeUp()} className="mb-16">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
-              <User size={18} className="text-cyan-400" />
-            </div>
-            <p className="text-cyan-400 font-semibold text-sm tracking-[0.2em] uppercase">About</p>
-          </div>
-          <h2 className="text-4xl sm:text-5xl font-bold theme-text-heading">Who I Am</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold theme-text-heading">About Me</h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
-          {/* Left - Story */}
-          <motion.div {...fadeUp(0.1)}>
-            <div className="space-y-5 mb-10">
-              <p className="theme-text-secondary leading-relaxed">
-                I'm a Computer Science student at Lovely Professional University with a passion for
-                building innovative solutions. My journey in tech started with curiosity and has evolved
-                into a deep commitment to creating impactful software.
-              </p>
-              <p className="theme-text-secondary leading-relaxed">
-                I specialize in full-stack development and machine learning, combining these skills
-                to build intelligent, scalable applications — from e-commerce platforms to AI-powered
-                systems.
-              </p>
+        <div className="grid lg:grid-cols-[0.4fr_1fr] gap-14 items-start">
+          {/* Left - Profile Card */}
+          <motion.div {...fadeUp(0.05)} className="flex flex-col items-center">
+            <div
+              className="w-48 h-48 rounded-2xl overflow-hidden border-2 mb-6"
+              style={{ borderColor: "var(--border-secondary)" }}
+            >
+              <img src={profileImage} alt="Aakash Deep Yadav" className="w-full h-full object-cover" />
             </div>
 
-            {/* Stats — Glassmorphism cards */}
-            <div className="grid grid-cols-3 gap-4 mb-10">
+            <h3 className="text-xl font-bold theme-text-heading mb-1">Aakash Deep Yadav</h3>
+            <p className="text-sm font-medium mb-4" style={{ color: "#00b4d8" }}>Software Developer</p>
+
+            {/* Quick Stats */}
+            <div className="grid grid-cols-3 gap-3 w-full mb-6">
               {[
-                { val: "8+", label: "Projects", icon: "🚀" },
-                { val: "5+", label: "Tech Stacks", icon: "⚡" },
-                { val: "3+", label: "Years Coding", icon: "💻" },
+                { val: "8+", label: "Projects" },
+                { val: "5+", label: "Tech Stacks" },
+                { val: "3+", label: "Years" },
               ].map((s, i) => (
-                <motion.div
-                  key={i}
-                  {...fadeUp(0.15 + i * 0.05)}
-                  className="glass-card p-5 text-center group"
-                  whileHover={{ scale: 1.03 }}
-                >
-                  <span className="text-xl mb-2 block">{s.icon}</span>
-                  <div className="text-2xl font-bold text-cyan-400 group-hover:theme-text-heading transition-colors">{s.val}</div>
-                  <div className="text-xs theme-text-muted mt-1">{s.label}</div>
-                </motion.div>
+                <div key={i} className="glass-card p-3 text-center">
+                  <div className="text-lg font-bold" style={{ color: "#00b4d8" }}>{s.val}</div>
+                  <div className="text-[10px] theme-text-muted mt-0.5">{s.label}</div>
+                </div>
               ))}
             </div>
 
-            <a href="/resume.pdf" download className="btn-glow btn-glow-primary">
+            <a href="/resume.pdf" download className="btn-solid w-full justify-center text-sm">
               <Download size={15} /> Download Resume
             </a>
           </motion.div>
 
-          {/* Right - Competencies */}
-          <motion.div {...fadeUp(0.2)}>
-            <p className="text-cyan-400 font-semibold text-sm tracking-[0.2em] uppercase mb-8">
-              Core Strengths
-            </p>
-            <div className="space-y-7">
-              {competencies.map((skill, i) => {
-                const Icon = skill.icon;
-                return (
-                  <motion.div key={i} {...fadeUp(0.25 + i * 0.08)}>
-                    <div className="flex items-center gap-3 mb-3">
-                      <div
-                        className="p-2.5 rounded-xl border"
-                        style={{
-                          borderColor: `${skill.color}25`,
-                          background: `${skill.color}08`,
-                        }}
-                      >
-                        <Icon size={18} style={{ color: skill.color }} />
-                      </div>
-                      <span className="font-medium text-sm theme-text-primary flex-1">{skill.name}</span>
-                      <span className="text-xs font-mono px-2 py-0.5 rounded-md theme-bg-tag theme-border-tag" style={{ color: skill.color, borderWidth: 1 }}>
-                        {skill.pct}%
-                      </span>
-                    </div>
-                    <div className="h-2 rounded-full overflow-hidden" style={{ backgroundColor: "var(--progress-bar-bg)" }}>
-                      <motion.div
-                        className="h-full rounded-full relative"
-                        style={{
-                          background: `linear-gradient(90deg, ${skill.color}, ${skill.color}80)`,
-                          boxShadow: `0 0 16px ${skill.color}40`,
-                        }}
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.pct}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1.2, delay: 0.3 + i * 0.1, ease: "easeOut" }}
-                      />
-                    </div>
-                  </motion.div>
-                );
-              })}
+          {/* Right - Summary */}
+          <motion.div {...fadeUp(0.1)}>
+            <div className="space-y-5 mb-8">
+              <p className="theme-text-secondary leading-relaxed text-[15px]">
+                I'm studying Computer Science at Lovely Professional University. Most of my time goes
+                into building web apps and learning how things work under the hood — from how databases
+                index queries to how React reconciles the DOM.
+              </p>
+              <p className="theme-text-secondary leading-relaxed text-[15px]">
+                My go-to stack is <span className="font-medium" style={{ color: "#00b4d8" }}>React, Node.js, Python, and MongoDB</span>.
+                I've also spent time with <span className="font-medium" style={{ color: "#00b4d8" }}>ML libraries</span> like
+                Scikit-Learn and TensorFlow — mostly building recommendation systems and classifiers.
+              </p>
+              <p className="theme-text-secondary leading-relaxed text-[15px]">
+                Lately I've been working with <span className="font-medium" style={{ color: "#00b4d8" }}>LLM APIs</span> and
+                building AI agents that can call tools, maintain context, and handle multi-step tasks.
+              </p>
             </div>
 
-            {/* Extra */}
-            <motion.div {...fadeUp(0.5)} className="glass-card p-6 mt-10">
+            {/* What I Bring */}
+            <div className="glass-card p-6">
               <h4 className="font-semibold text-sm theme-text-heading mb-4 flex items-center gap-2">
-                <span className="text-lg">✨</span> What I Bring
+                <CheckCircle size={16} style={{ color: "#00b4d8" }} /> Things I'm good at
               </h4>
-              <ul className="space-y-3">
+              <div className="grid sm:grid-cols-2 gap-3">
                 {[
-                  "Strong foundation in data structures & algorithms",
-                  "Experience with modern frameworks and cloud tools",
-                  "Passion for clean code and best practices",
-                  "Quick learner with strong problem-solving skills",
+                  "DSA — solved 100+ problems on LeetCode",
+                  "REST APIs, auth flows, and database schema design",
+                  "Clean Git history, meaningful PRs, code reviews",
+                  "Docker, CI/CD, deploying to Vercel and Render",
+                  "Working with teammates across timezones",
+                  "Taking a feature from idea to production",
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm theme-text-secondary">
-                    <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full mt-[7px] flex-shrink-0" />
+                  <div key={i} className="flex items-start gap-2.5 text-sm theme-text-secondary">
+                    <span className="w-1.5 h-1.5 rounded-full mt-[7px] flex-shrink-0" style={{ backgroundColor: "#00b4d8" }} />
                     {item}
-                  </li>
+                  </div>
                 ))}
-              </ul>
-            </motion.div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>

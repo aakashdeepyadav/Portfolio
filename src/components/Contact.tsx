@@ -1,24 +1,22 @@
-import { Mail, MapPin, Github, Linkedin, ExternalLink, Send, MessageSquare, Trophy } from "lucide-react";
+import { Mail, MapPin, Github, Linkedin, Send, Phone } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { SiLeetcode } from "react-icons/si";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 24 } as const,
+  initial: { opacity: 0, y: 20 } as const,
   whileInView: { opacity: 1, y: 0 } as const,
   viewport: { once: true } as const,
-  transition: { duration: 0.5, delay },
+  transition: { duration: 0.4, delay },
 });
 
 const contactInfo = [
-  { icon: Mail, label: "Email", value: "aakashdeepyadav106@gmail.com", href: "mailto:aakashdeepyadav106@gmail.com", accent: "#00d4ff" },
-  { icon: Linkedin, label: "LinkedIn", value: "aakashdeepyadav", href: "https://linkedin.com/in/aakashdeepyadav", accent: "#0077b5" },
-  { icon: Github, label: "GitHub", value: "aakashdeepyadav", href: "https://github.com/aakashdeepyadav", accent: "#7c3aed" },
-  { icon: SiLeetcode, label: "LeetCode", value: "aakashdeepyadav", href: "https://leetcode.com/u/aakashdeepyadav/", accent: "#ffa116" },
-  { icon: Trophy, label: "Codolio", value: "aakashdeepyadav", href: "https://codolio.com/profile/aakashdeepyadav", accent: "#10b981" },
-  { icon: MapPin, label: "Location", value: "Punjab, India", href: "#", accent: "#f97316" },
+  { icon: Mail, label: "Email", value: "aakashdeepyadav106@gmail.com", href: "mailto:aakashdeepyadav106@gmail.com" },
+  { icon: Phone, label: "Phone", value: "+91 XXXXXXXXXX", href: "tel:+91XXXXXXXXXX" },
+  { icon: Linkedin, label: "LinkedIn", value: "aakashdeepyadav", href: "https://linkedin.com/in/aakashdeepyadav" },
+  { icon: Github, label: "GitHub", value: "aakashdeepyadav", href: "https://github.com/aakashdeepyadav" },
+  { icon: MapPin, label: "Location", value: "Punjab, India", href: "#" },
 ];
 
 const Contact = () => {
@@ -74,58 +72,37 @@ const Contact = () => {
 
   return (
     <section id="contact" className="relative py-28 section-divider overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div
-          className="absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage: `radial-gradient(circle, var(--dot-color) 1px, transparent 1px)`,
-            backgroundSize: "40px 40px",
-          }}
-        />
-        <div className="absolute bottom-1/3 -right-40 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[160px]" />
-        <div className="absolute top-1/4 -left-40 w-[400px] h-[400px] bg-violet-500/5 rounded-full blur-[140px]" />
-      </div>
-
       <ToastContainer position="top-right" autoClose={4000} theme="dark" />
       <div className="wrapper relative z-10">
         {/* Header */}
         <motion.div {...fadeUp()} className="mb-16">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
-              <MessageSquare size={18} className="text-cyan-400" />
-            </div>
-            <p className="text-cyan-400 font-semibold text-sm tracking-[0.2em] uppercase">Contact</p>
-          </div>
-          <h2 className="text-4xl sm:text-5xl font-bold theme-text-heading mb-4">Let's Connect</h2>
-          <p className="theme-text-muted text-lg max-w-xl">
-            Open to opportunities, collaborations, and interesting conversations
+          <h2 className="text-3xl sm:text-4xl font-bold theme-text-heading mb-3">Get In Touch</h2>
+          <p className="theme-text-muted text-base max-w-xl">
+            Have a project in mind, or just want to connect? Drop me a message
           </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Info Cards */}
-          <motion.div {...fadeUp(0.1)} className="space-y-4">
+          <motion.div {...fadeUp(0.05)} className="space-y-4">
             {contactInfo.map((info, i) => {
               const Icon = info.icon;
               return (
-                <motion.a
+                <a
                   key={i}
                   href={info.href}
                   target={info.href.startsWith("http") ? "_blank" : undefined}
                   rel={info.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="group glass-card flex items-center gap-4 p-5"
-                  whileHover={{ x: 6, scale: 1.01 }}
-                  transition={{ type: "spring", stiffness: 300 }}
+                  className="group glass-card flex items-center gap-4 p-5 block"
                 >
                   <div
-                    className="p-3 rounded-xl flex-shrink-0 border"
+                    className="p-3 rounded-xl flex-shrink-0"
                     style={{
-                      background: `${info.accent}10`,
-                      borderColor: `${info.accent}25`,
+                      backgroundColor: "rgba(0, 180, 216, 0.08)",
+                      border: "1px solid rgba(0, 180, 216, 0.15)",
                     }}
                   >
-                    <Icon size={18} style={{ color: info.accent }} />
+                    <Icon size={18} style={{ color: "#00b4d8" }} />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-[10px] uppercase tracking-widest theme-text-faint mb-0.5">{info.label}</p>
@@ -133,30 +110,16 @@ const Contact = () => {
                       {info.value}
                     </p>
                   </div>
-                  {info.href.startsWith("http") && (
-                    <ExternalLink size={14} className="theme-text-faint group-hover:text-cyan-400 transition-colors flex-shrink-0" />
-                  )}
-                </motion.a>
+                </a>
               );
             })}
-
-            {/* Quick connect banner */}
-            <motion.div {...fadeUp(0.3)} className="glass-card p-5 mt-4">
-              <div className="flex items-center gap-4">
-                <span className="text-3xl">💬</span>
-                <div>
-                  <p className="text-sm font-medium theme-text-heading mb-1">Prefer a quick chat?</p>
-                  <p className="text-xs theme-text-muted">I typically respond within 24 hours</p>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
 
           {/* Form */}
-          <motion.form {...fadeUp(0.2)} onSubmit={handleSubmit} className="glow-card">
+          <motion.form {...fadeUp(0.1)} onSubmit={handleSubmit} className="glow-card">
             <div className="p-6 sm:p-8 space-y-5">
               <div className="flex items-center gap-2 mb-2">
-                <Send size={16} className="text-cyan-400" />
+                <Send size={16} style={{ color: "#00b4d8" }} />
                 <h3 className="font-semibold theme-text-heading text-sm">Send a Message</h3>
               </div>
               <div>
