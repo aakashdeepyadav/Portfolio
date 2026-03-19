@@ -52,10 +52,11 @@ const Hero = () => {
               {...fadeUp(0.2)}
               className="text-base sm:text-lg leading-relaxed max-w-xl mb-5 theme-text-secondary"
             >
-              CS student at Lovely Professional University building full-stack
-              apps and AI-powered tools. I work with React, Node.js, Python &
-              MongoDB — and lately I've been deep into LLM agents and
-              recommendation systems.
+              I build full-stack web applications and AI-powered tools using
+              React, Node.js, Python and MongoDB. From writing clean APIs to
+              training recommendation models and building LLM agents, I enjoy
+              owning problems end to end and shipping things that people
+              actually use.
             </motion.p>
 
             {/* Compact highlights — one line each */}
