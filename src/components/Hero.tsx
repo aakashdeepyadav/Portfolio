@@ -9,6 +9,7 @@ const Hero = () => {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ backgroundColor: "var(--bg-primary)" }}
     >
+      <div id="about" className="absolute top-0" aria-hidden="true" />
       <div className="wrapper w-full">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20 py-28 lg:py-0">
           {/* Text */}
@@ -29,9 +30,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.2 }}
             >
-              I'm{" "}
-              <span style={{ color: "#00b4d8" }}>Aakash Deep</span>{" "}
-              Yadav
+              I'm <span style={{ color: "#00b4d8" }}>Aakash Deep</span> Yadav
             </motion.h1>
 
             <motion.p
@@ -40,10 +39,48 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.3 }}
             >
-              I work across the stack — React frontends, Node.js APIs,
-              databases, and occasionally ML models. I like building things
-              that are useful, well-structured, and actually work.
+              I am a software developer focused on building practical digital
+              products. I specialize in full-stack development and AI-enabled
+              workflows to solve real-world problems with clean, scalable code.
             </motion.p>
+
+            <motion.div
+              className="grid sm:grid-cols-2 gap-3 mb-10"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.35 }}
+            >
+              {[
+                {
+                  title: "Who am I?",
+                  text: "A builder who enjoys turning ideas into products that people can actually use.",
+                },
+                {
+                  title: "Specialize in",
+                  text: "React, Node.js, databases, and Python-based AI/ML integration.",
+                },
+                {
+                  title: "Why this path?",
+                  text: "I like combining logic and creativity to create technology with measurable impact.",
+                },
+                {
+                  title: "Future use of skills",
+                  text: "I will apply these skills to build reliable, intelligent systems that scale and help users make faster decisions.",
+                },
+              ].map((item) => (
+                <div key={item.title} className="glass-card p-4">
+                  <h3
+                    className="text-sm font-semibold mb-1.5"
+                    style={{ color: "#00b4d8" }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed theme-text-secondary">
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
 
             <motion.div
               className="flex flex-wrap items-center gap-4"
