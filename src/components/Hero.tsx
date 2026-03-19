@@ -45,41 +45,27 @@ const Hero = () => {
             </motion.p>
 
             <motion.div
-              className="grid sm:grid-cols-2 gap-3 mb-10"
+              className="max-w-2xl mb-10"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.35 }}
             >
-              {[
-                {
-                  title: "Who am I?",
-                  text: "A builder who enjoys turning ideas into products that people can actually use.",
-                },
-                {
-                  title: "Specialize in",
-                  text: "React, Node.js, databases, and Python-based AI/ML integration.",
-                },
-                {
-                  title: "Why this path?",
-                  text: "I like combining logic and creativity to create technology with measurable impact.",
-                },
-                {
-                  title: "Future use of skills",
-                  text: "I will apply these skills to build reliable, intelligent systems that scale and help users make faster decisions.",
-                },
-              ].map((item) => (
-                <div key={item.title} className="glass-card p-4">
-                  <h3
-                    className="text-sm font-semibold mb-1.5"
-                    style={{ color: "#00b4d8" }}
-                  >
-                    {item.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed theme-text-secondary">
-                    {item.text}
-                  </p>
-                </div>
-              ))}
+              <div
+                className="rounded-2xl p-5 sm:p-6"
+                style={{
+                  background:
+                    "linear-gradient(120deg, rgba(0, 180, 216, 0.1), rgba(15, 23, 42, 0.15))",
+                  border: "1px solid var(--border-secondary)",
+                }}
+              >
+                <p className="text-sm sm:text-base leading-relaxed theme-text-secondary">
+                  I build practical products from ideas, with strong foundations
+                  in React, Node.js, databases, and Python-based AI/ML
+                  integration. My focus is to combine creativity with
+                  engineering discipline to deliver reliable systems that scale
+                  and create measurable impact.
+                </p>
+              </div>
             </motion.div>
 
             <motion.div
