@@ -36,11 +36,16 @@ const certificates = [
 ];
 
 const Certificates = () => (
-  <section id="certificates" className="relative py-28 section-divider overflow-hidden">
+  <section
+    id="certificates"
+    className="relative py-28 section-divider overflow-hidden"
+  >
     <div className="wrapper relative z-10">
       {/* Header with section number */}
       <motion.div {...fadeUp()} className="mb-16">
-        <h2 className="text-3xl sm:text-4xl font-bold theme-text-heading mb-3">Certifications</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold theme-text-heading mb-3">
+          Certifications
+        </h2>
         <p className="theme-text-muted text-base max-w-xl">
           Courses I've completed
         </p>
@@ -53,7 +58,7 @@ const Certificates = () => (
             <div className="glass-card h-full flex flex-col overflow-hidden">
               {/* Certificate Image */}
               <div
-                className="relative h-44 overflow-hidden"
+                className="relative h-56 overflow-hidden"
                 style={{ backgroundColor: "var(--bg-card-alt)" }}
               >
                 <img
@@ -69,13 +74,22 @@ const Certificates = () => (
                   }}
                 />
                 {/* Fallback */}
-                <div className="absolute inset-0 items-center justify-center hidden"
-                  style={{ backgroundColor: "var(--bg-card-alt)" }}>
+                <div
+                  className="absolute inset-0 items-center justify-center hidden"
+                  style={{ backgroundColor: "var(--bg-card-alt)" }}
+                >
                   <Award size={36} className="theme-text-faint opacity-40" />
                 </div>
                 <div
-                  className="absolute top-3 right-3 px-2.5 py-1 rounded-lg text-[10px] font-medium theme-text-muted"
-                  style={{ backgroundColor: "var(--bg-tag)", border: "1px solid var(--border-tag)", backdropFilter: "blur(8px)" }}
+                  className="absolute top-3 right-3 px-2.5 py-1 rounded-lg text-[10px] font-medium"
+                  style={{
+                    color: "var(--cert-date-text)",
+                    backgroundColor: "var(--cert-date-bg)",
+                    border: "1px solid var(--cert-date-border)",
+                    backdropFilter: "blur(8px)",
+                    WebkitBackdropFilter: "blur(8px)",
+                    textShadow: "var(--cert-date-shadow)",
+                  }}
                 >
                   {cert.date}
                 </div>
@@ -86,10 +100,15 @@ const Certificates = () => (
                 <h3 className="text-base font-bold theme-text-heading mb-1 group-hover:text-cyan-400 transition-colors">
                   {cert.title}
                 </h3>
-                <p className="text-sm font-medium mb-3" style={{ color: "#00b4d8" }}>
+                <p
+                  className="text-sm font-medium mb-3"
+                  style={{ color: "#00b4d8" }}
+                >
                   {cert.issuer}
                 </p>
-                <p className="theme-text-muted text-sm leading-relaxed flex-1 mb-5">{cert.desc}</p>
+                <p className="theme-text-muted text-sm leading-relaxed flex-1 mb-5">
+                  {cert.desc}
+                </p>
 
                 {/* View Certificate Button */}
                 <a

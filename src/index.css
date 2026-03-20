@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
 @import "tailwindcss";
 
 /* ============================================
@@ -13,6 +13,7 @@
   --bg-input: rgba(15, 23, 42, 0.6);
   --bg-badge: rgba(15, 23, 42, 0.5);
   --bg-tag: rgba(30, 41, 59, 0.6);
+  --cert-date-bg: rgba(2, 6, 23, 0.72);
   --bg-footer: #060609;
 
   /* Text */
@@ -20,12 +21,14 @@
   --text-heading: #ffffff;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
+  --cert-date-text: #ffffff;
   --text-faint: #475569;
 
   /* Borders */
   --border-primary: rgba(148, 163, 184, 0.08);
   --border-secondary: rgba(148, 163, 184, 0.15);
   --border-tag: rgba(51, 65, 85, 0.3);
+  --cert-date-border: rgba(148, 163, 184, 0.35);
   --border-hover: rgba(0, 180, 216, 0.3);
 
   /* Cards */
@@ -40,6 +43,7 @@
 
   /* Misc */
   --selection-bg: rgba(0, 217, 255, 0.25);
+  --cert-date-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
   --dot-color: #94a3b8;
   --nav-scrolled-bg: rgba(10, 10, 15, 0.85);
   --mobile-menu-bg: rgba(15, 23, 42, 0.95);
@@ -57,6 +61,7 @@
   --bg-input: rgba(241, 245, 249, 0.8);
   --bg-badge: rgba(241, 245, 249, 0.8);
   --bg-tag: rgba(226, 232, 240, 0.6);
+  --cert-date-bg: var(--bg-tag);
   --bg-footer: #f1f5f9;
 
   /* Text */
@@ -64,12 +69,14 @@
   --text-heading: #0f172a;
   --text-secondary: #475569;
   --text-muted: #64748b;
+  --cert-date-text: var(--text-muted);
   --text-faint: #94a3b8;
 
   /* Borders */
   --border-primary: rgba(148, 163, 184, 0.2);
   --border-secondary: rgba(148, 163, 184, 0.3);
   --border-tag: rgba(203, 213, 225, 0.5);
+  --cert-date-border: var(--border-tag);
   --border-hover: rgba(0, 180, 216, 0.25);
 
   /* Cards */
@@ -84,6 +91,7 @@
 
   /* Misc */
   --selection-bg: rgba(0, 180, 216, 0.2);
+  --cert-date-shadow: none;
   --dot-color: #cbd5e1;
   --nav-scrolled-bg: rgba(248, 250, 252, 0.9);
   --mobile-menu-bg: rgba(255, 255, 255, 0.97);
@@ -101,13 +109,20 @@
   }
 
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      system-ui,
+      sans-serif;
     background-color: var(--bg-primary);
     color: var(--text-primary);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
   }
 
   ::-webkit-scrollbar {
@@ -137,7 +152,6 @@
    CUSTOM UTILITIES
    ============================================ */
 @layer utilities {
-
   /* ── Layout Wrapper ────────────────────── */
   .wrapper {
     width: 100%;
