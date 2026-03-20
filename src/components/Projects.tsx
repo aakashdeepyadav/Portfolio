@@ -12,8 +12,16 @@ const projects = [
   {
     title: "Student Career Recommendation System",
     desc: "Career guidance app with a microservice setup — React frontend talks to a Node.js API, which routes requests to a FastAPI ML service. The ML model is trained on 20+ student attributes using Scikit-Learn.",
-    tech: ["React.js", "Node.js", "FastAPI", "Python", "MongoDB", "Scikit-Learn"],
-    github: "https://github.com/aakashdeepyadav",
+    tech: [
+      "React.js",
+      "Node.js",
+      "FastAPI",
+      "Python",
+      "MongoDB",
+      "Scikit-Learn",
+    ],
+    github:
+      "https://github.com/aakashdeepyadav/Student-Career-Recommendation-System",
     live: "https://student-career-recommendation-system.vercel.app/",
     screenshot: "/projects/Student_Career_Recommendation_System_Screenshot.png",
   },
@@ -21,26 +29,38 @@ const projects = [
     title: "Shared Expense Tracker",
     desc: "Group expense management app with Firebase Auth, Firestore real-time sync, and an automated debt-settlement algorithm. Supports multiple groups, split types, and transaction history.",
     tech: ["React.js", "Express.js", "Firebase", "JavaScript", "Firestore"],
-    github: "https://github.com/aakashdeepyadav",
+    github: "https://github.com/aakashdeepyadav/Shared-Expense-Tracker",
     live: "https://shared-expense-tracker-set.vercel.app/",
     screenshot: "/projects/shared_expense_tracker_screenshot.png",
   },
   {
     title: "Time Management AI Coach",
     desc: "Productivity app with LLM-powered coaching. Has Pomodoro timers, a drag-and-drop task board, auto-generated weekly schedules, and charts that track how productive you've been.",
-    tech: ["React.js", "Node.js", "LLM APIs", "Python", "PostgreSQL", "Tailwind CSS"],
-    github: "https://github.com/aakashdeepyadav",
+    tech: [
+      "React.js",
+      "Node.js",
+      "LLM APIs",
+      "Python",
+      "PostgreSQL",
+      "Tailwind CSS",
+    ],
+    github: "https://github.com/aakashdeepyadav/Time-Management-Coach",
     live: "https://time-management-coach.netlify.app/",
     screenshot: "/projects/Time_Management_Coach_Screenshot.png",
   },
 ];
 
 const Projects = () => (
-  <section id="projects" className="relative py-28 section-divider overflow-hidden">
+  <section
+    id="projects"
+    className="relative py-28 section-divider overflow-hidden"
+  >
     <div className="wrapper relative z-10">
       {/* Header with section number */}
       <motion.div {...fadeUp()} className="mb-16">
-        <h2 className="text-3xl sm:text-4xl font-bold theme-text-heading mb-3">Featured Projects</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold theme-text-heading mb-3">
+          Featured Projects
+        </h2>
         <p className="theme-text-muted text-base max-w-xl">
           Some things I've built recently
         </p>
@@ -70,12 +90,15 @@ const Projects = () => (
                   }}
                 />
                 {/* Fallback if no image */}
-                <div className="absolute inset-0 items-center justify-center hidden"
-                  style={{ backgroundColor: "var(--bg-card-alt)" }}>
+                <div
+                  className="absolute inset-0 items-center justify-center hidden"
+                  style={{ backgroundColor: "var(--bg-card-alt)" }}
+                >
                   <Layers size={40} className="theme-text-faint opacity-40" />
                 </div>
                 {/* Overlay on hover */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3"
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3"
                   style={{ backgroundColor: "rgba(0,0,0,0.6)" }}
                 >
                   <a
@@ -106,7 +129,9 @@ const Projects = () => (
                 <h3 className="text-lg font-bold theme-text-heading mb-2 group-hover:text-cyan-400 transition-colors">
                   {p.title}
                 </h3>
-                <p className="theme-text-muted text-sm leading-relaxed mb-5 flex-1">{p.desc}</p>
+                <p className="theme-text-muted text-sm leading-relaxed mb-5 flex-1">
+                  {p.desc}
+                </p>
 
                 {/* Tech Tags */}
                 <div className="flex flex-wrap gap-1.5 mb-5">
@@ -122,7 +147,10 @@ const Projects = () => (
                 </div>
 
                 {/* Action Links */}
-                <div className="flex gap-3 pt-4" style={{ borderTop: "1px solid var(--border-primary)" }}>
+                <div
+                  className="flex gap-3 pt-4"
+                  style={{ borderTop: "1px solid var(--border-primary)" }}
+                >
                   <a
                     href={p.live}
                     target="_blank"
