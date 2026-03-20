@@ -15,9 +15,10 @@ const educationData = [
     location: "Punjab, India",
     period: "2023 – Present",
     highlights: [
-      "Coursework: Data Structures, Algorithms, DBMS, OS, Software Engineering, ML",
-      "Part of coding clubs, participate in contests regularly",
-      "Built and deployed projects during hackathons",
+      "CGPA: 8.19",
+      // "Coursework: Data Structures, Algorithms, DBMS, OS, Software Engineering, ML",
+      // "Part of coding clubs, participate in contests regularly",
+      // "Built and deployed projects during hackathons",
     ],
     current: true,
     image: "/images/lovely_professional_university.jpg",
@@ -27,7 +28,7 @@ const educationData = [
     school: "Tiny Tots Sr. Sec. School",
     location: "Ayodhya, India",
     period: "2020 – 2022",
-    highlights: [],
+    highlights: ["Percentage: 82"],
     current: false,
     image: "/images/tiny_tots_sr_sec_school.jpg",
   },
@@ -36,18 +37,23 @@ const educationData = [
     school: "Tiny Tots Sr. Sec. School",
     location: "Ayodhya, India",
     period: "2018 – 2020",
-    highlights: [],
+    highlights: ["Percentage: 83"],
     current: false,
     image: "/images/Tiny_Tots.jpg",
   },
 ];
 
 const Education = () => (
-  <section id="education" className="relative py-28 section-divider overflow-hidden">
+  <section
+    id="education"
+    className="relative py-28 section-divider overflow-hidden"
+  >
     <div className="wrapper relative z-10">
       {/* Header */}
       <motion.div {...fadeUp()} className="mb-16">
-        <h2 className="text-3xl sm:text-4xl font-bold theme-text-heading mb-3">Educational Journey</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold theme-text-heading mb-3">
+          Educational Journey
+        </h2>
         <p className="theme-text-muted text-base max-w-xl">
           Where I learned the fundamentals
         </p>
@@ -72,13 +78,17 @@ const Education = () => (
               <div
                 className="absolute left-[15px] sm:left-1/2 sm:-translate-x-1/2 top-2 w-4 h-4 rounded-full z-10 border-[3px]"
                 style={{
-                  backgroundColor: edu.current ? "#00b4d8" : "var(--text-faint)",
+                  backgroundColor: edu.current
+                    ? "#00b4d8"
+                    : "var(--text-faint)",
                   borderColor: "var(--bg-primary)",
                 }}
               />
 
               {/* Card */}
-              <div className={`${i % 2 === 0 ? "sm:col-start-1 sm:pr-10" : "sm:col-start-2 sm:pl-10"}`}>
+              <div
+                className={`${i % 2 === 0 ? "sm:col-start-1 sm:pr-10" : "sm:col-start-2 sm:pl-10"}`}
+              >
                 <div className="glass-card overflow-hidden">
                   {/* Institution Image */}
                   <div
@@ -99,10 +109,21 @@ const Education = () => (
 
                   <div className="p-5">
                     <div className="flex items-start gap-3 mb-3">
-                      <GraduationCap size={18} style={{ color: "#00b4d8" }} className="flex-shrink-0 mt-0.5" />
+                      <GraduationCap
+                        size={18}
+                        style={{ color: "#00b4d8" }}
+                        className="flex-shrink-0 mt-0.5"
+                      />
                       <div className="flex-1 min-w-0">
-                        <h3 className="font-bold theme-text-heading text-[15px] mb-1">{edu.degree}</h3>
-                        <p className="text-sm font-medium" style={{ color: "#00b4d8" }}>{edu.school}</p>
+                        <h3 className="font-bold theme-text-heading text-[15px] mb-1">
+                          {edu.degree}
+                        </h3>
+                        <p
+                          className="text-sm font-medium"
+                          style={{ color: "#00b4d8" }}
+                        >
+                          {edu.school}
+                        </p>
                       </div>
                     </div>
 
@@ -133,7 +154,10 @@ const Education = () => (
                     {edu.highlights.length > 0 && (
                       <ul className="space-y-1.5">
                         {edu.highlights.map((h, j) => (
-                          <li key={j} className="flex items-start gap-2 text-xs theme-text-muted">
+                          <li
+                            key={j}
+                            className="flex items-start gap-2 text-xs theme-text-muted"
+                          >
                             <span
                               className="w-1 h-1 rounded-full mt-[6px] flex-shrink-0"
                               style={{ backgroundColor: "#00b4d8" }}
@@ -148,7 +172,11 @@ const Education = () => (
               </div>
 
               {/* Empty space for the other side */}
-              {i % 2 === 0 ? <div className="hidden sm:block" /> : <div className="hidden sm:block sm:col-start-1 sm:row-start-1" />}
+              {i % 2 === 0 ? (
+                <div className="hidden sm:block" />
+              ) : (
+                <div className="hidden sm:block sm:col-start-1 sm:row-start-1" />
+              )}
             </motion.div>
           ))}
         </div>
